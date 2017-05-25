@@ -1,0 +1,50 @@
+plugins {
+    id "java-gradle-plugin"
+    id "groovy"
+    id "maven"
+    id "maven-publish"
+}
+
+group 'com.github.ishestakov'
+version '1.0-SNAPSHOT'
+
+
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.github.swissquote:carnotzet-core:1.0.0'
+    compile 'com.github.swissquote:carnotzet-orchestrator-docker-compose:1.0.0'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId "com.github.ishestakov"
+            artifactId "gradle-carnotzet-plugin"
+            version "1.0-SNAPSHOT"
+
+            from components.java
+        }
+    }
+}
+
+gradlePlugin {
+    plugins {
+        gradleCarnotzetPlugin {
+            id = "com.github.ishestakov.carnotzet"
+            implementationClass = "com.github.ishestakov.carnotzet.gradle.CarnotzetPlugin"
+        }
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.version = '1.0-SNAPSHOT'
+        pom.artifactId = 'gradle-carnotzet-plugin'
+    }
+}
