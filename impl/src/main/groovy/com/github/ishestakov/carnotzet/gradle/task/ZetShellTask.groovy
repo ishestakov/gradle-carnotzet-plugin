@@ -12,6 +12,10 @@ import org.gradle.api.logging.Logger
  */
 class ZetShellTask extends AbstractZetTask {
 
+    ZetShellTask() {
+        super(com.github.ishestakov.carnotzet.gradle.task.ZetShellTask.class)
+    }
+
     @Override
     void executeInternal() {
         execute(getRuntime(), getLogger(), getService(), getAnt());
@@ -49,7 +53,7 @@ class ZetShellTask extends AbstractZetTask {
             i++;
         }
         log.info("");
-        ant.input(message: 'Enter keystore password:', addproperty: 'serviceInput', defaultValue : '')
+        ant.input(message: 'Enter container ID:', addproperty: 'serviceInput', defaultValue : '')
         def prompt = ant.properties.serviceInput
         return options.get(Integer.valueOf(prompt));
     }

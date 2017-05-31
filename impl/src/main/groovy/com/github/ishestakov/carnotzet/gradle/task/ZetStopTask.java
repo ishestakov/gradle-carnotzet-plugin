@@ -3,10 +3,11 @@ package com.github.ishestakov.carnotzet.gradle.task;
 import com.github.swissquote.carnotzet.core.runtime.log.LogListener;
 import com.github.swissquote.carnotzet.core.runtime.log.StdOutLogPrinter;
 
-/**
- * Created by ishestakov on 5/25/17.
- */
 public class ZetStopTask extends AbstractZetTask {
+
+	public ZetStopTask() {
+		super(ZetStopTask.class);
+	}
 
 	@Override
 	public void executeInternal() {

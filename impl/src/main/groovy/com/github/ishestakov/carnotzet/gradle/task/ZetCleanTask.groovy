@@ -5,6 +5,10 @@ package com.github.ishestakov.carnotzet.gradle.task
  */
 public class ZetCleanTask extends AbstractZetTask {
 
+    ZetCleanTask() {
+        super(com.github.ishestakov.carnotzet.gradle.task.ZetCleanTask.class)
+    }
+
     @Override
     void executeInternal() {
         getRuntime().clean();

@@ -5,6 +5,10 @@ package com.github.ishestakov.carnotzet.gradle.task
  */
 class ZetPullTask extends AbstractZetTask {
 
+    ZetPullTask() {
+        super(ZetPullTask.class)
+    }
+
     @Override
     void executeInternal() {
         getRuntime().pull()

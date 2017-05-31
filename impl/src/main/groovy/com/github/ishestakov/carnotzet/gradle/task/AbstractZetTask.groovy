@@ -1,4 +1,5 @@
 package com.github.ishestakov.carnotzet.gradle.task
+
 import com.github.swissquote.carnotzet.core.Carnotzet
 import com.github.swissquote.carnotzet.core.CarnotzetConfig
 import com.github.swissquote.carnotzet.core.maven.CarnotzetModuleCoordinates
@@ -6,53 +7,39 @@ import com.github.swissquote.carnotzet.core.runtime.api.ContainerOrchestrationRu
 import com.github.swissquote.carnotzet.core.runtime.log.LogListener
 import com.github.swissquote.carnotzet.core.runtime.log.StdOutLogPrinter
 import com.github.swissquote.carnotzet.runtime.docker.compose.DockerComposeRuntime
-import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 
 import java.nio.file.Paths
 
 import static java.util.stream.Collectors.toList
 
-/**
- * Created by ishestakov on 5/25/17.
- */
-abstract class AbstractZetTask extends DefaultTask {
+abstract class AbstractZetTask extends GradleCommandRunner {
 
     Carnotzet carnotzet;
     ContainerOrchestrationRuntime runtime;
     boolean follow;
     String service;
 
+    AbstractZetTask(Class<?> clazz) {
+        super(clazz)
+        setStandardInput(System.in)
+    }
 
     @TaskAction
     void exec() {
-//        List<CarnotzetExtensionsFactory> factories = new ArrayList<>(0);
-//        ServiceLoader.load(CarnotzetExtensionsFactory.class).iterator().forEachRemaining({e -> factories.add e});
 
         CarnotzetConfig config = CarnotzetConfig.builder()
-                //TODO: replace artifact
                 .topLevelModuleId(new CarnotzetModuleCoordinates(getProject().getGroup(), getProject().name, getProject().getVersion()))
-                .resourcesPath(Paths.get(getProject().buildDir as String, "carnotzet"))
+                .resourcesPath(Paths.get(getProject().buildDir as String, "carnotzet", getProject().name))
                 .topLevelModuleResourcesPath(getProject().projectDir.toPath().resolve("src/main/resources"))
-//                .extensions(findRuntimeExtensions(factories))
-                .build();
+              .build();
         carnotzet = new Carnotzet(config);
-//        runtime = new DockerComposeRuntime(carnotzet, getProject().configurations.carnotzet.instanceId);
-        runtime = new DockerComposeRuntime(carnotzet, null); //TODO get it from configuration
+        runtime = new DockerComposeRuntime(carnotzet, getProject().name, this);
 
         executeInternal();
-
     }
 
     abstract void executeInternal()
-
-//    private List<CarnotzetExtension> findRuntimeExtensions(List<CarnotzetExtensionsFactory> factories) {
-//        return factories.stream()
-//                .map({factory -> factory.create(findExtensionFactoryProperties(factory))})
-//                .collect(Collectors.toList());
-//    }
 
     Runnable wrapWithLogFollowIfNeeded(Runnable block) {
         if (follow) {
@@ -78,7 +65,4 @@ abstract class AbstractZetTask extends DefaultTask {
     static List<String> getServiceNames(Carnotzet carnotzet) {
         return carnotzet.getModules().stream().map({it.getName()}).sorted().collect(toList());
     }
-
-
-
 }

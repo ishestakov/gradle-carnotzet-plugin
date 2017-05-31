@@ -13,12 +13,13 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    compile 'com.github.swissquote:carnotzet-core:1.0.0'
-    compile 'com.github.swissquote:carnotzet-orchestrator-docker-compose:1.0.0'
+    compile 'com.github.swissquote:carnotzet-core:1.0.1-SNAPSHOT'
+    compile 'com.github.swissquote:carnotzet-orchestrator-docker-compose:1.0.1-SNAPSHOT'
 }
 
 publishing {

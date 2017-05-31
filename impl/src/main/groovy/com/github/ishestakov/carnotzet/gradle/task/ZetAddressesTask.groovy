@@ -5,26 +5,30 @@ import com.github.swissquote.carnotzet.core.runtime.api.ContainerOrchestrationRu
 import org.gradle.api.logging.Logger
 
 public class ZetAddressesTask extends AbstractZetTask {
+    ZetAddressesTask() {
+        super(ZetAddressesTask.class)
+    }
+
     @Override
     void executeInternal() {
         execute(getRuntime(), getLogger());
     }
 
-    static void execute(ContainerOrchestrationRuntime runtime, Logger log) {
+    void execute(ContainerOrchestrationRuntime runtime, Logger log) {
         List<Container> containers = runtime.getContainers();
         if (containers.isEmpty()) {
-            log.info("There doesn't seem to be any containers created yet for this carnotzet, please make sure the carnotzet is started");
+            getStandardOutput().println("There doesn't seem to be any containers created yet for this carnotzet, please make sure the carnotzet is started");
             return;
         }
 
-        log.info("");
-        log.info(String.format("%-25s", "APPLICATION") + "   IP ADDRESS");
-        log.info("");
+        getStandardOutput().println("");
+        getStandardOutput().println(String.format("%-25s", "APPLICATION") + "   IP ADDRESS");
+        getStandardOutput().println("");
         for (Container container : containers) {
-            log.info(String.format("%-25s", container.getServiceName()) + " : "
+            getStandardOutput().println(String.format("%-25s", container.getServiceName()) + " : "
                     + (container.getIp() == null ? "No address, is container started ?"
                     : container.getIp() + " (" + container.getServiceName() + ".docker)"));
         }
-        log.info("");
+        getStandardOutput().println("");
     }
 }

@@ -9,6 +9,10 @@ import org.apache.maven.plugin.MojoFailureException
 
 class ZetRunTask extends AbstractZetTask {
 
+    ZetRunTask() {
+        super(ZetRunTask.class)
+    }
+
     @Override
     void executeInternal() {
         execute(getRuntime(), getCarnotzet(), getService());

@@ -7,6 +7,10 @@ import com.github.swissquote.carnotzet.core.runtime.log.StdOutLogPrinter
 
 public class ZetLogsTask extends AbstractZetTask {
 
+    ZetLogsTask() {
+        super(ZetLogsTask.class)
+    }
+
     @Override
     void executeInternal() {
         execute(getRuntime(), getCarnotzet(), getService());

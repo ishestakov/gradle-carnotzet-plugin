@@ -5,6 +5,7 @@ import org.gradle.api.Task;
 class ZetStartTask extends AbstractZetTask {
 
     public ZetStartTask() {
+        super(ZetStartTask.class)
         this.dependsOn.add("install");
     }
 
