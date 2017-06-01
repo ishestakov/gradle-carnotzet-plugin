@@ -22,7 +22,6 @@ class CarnotzetPlugin implements Plugin<Project> {
         project.task("zetClean", type: ZetCleanTask)
 
         project.task("zetLogs", type: ZetLogsTask)
-        project.task("zetShell", type: ZetShellTask)
 
         project.task("zetPull", type: ZetPullTask)
 
