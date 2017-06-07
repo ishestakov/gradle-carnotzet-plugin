@@ -5,9 +5,7 @@ package com.github.ishestakov.carnotzet.gradle.task
  */
 public class ZetCleanTask extends AbstractZetTask {
 
-    ZetCleanTask() {
-        super(com.github.ishestakov.carnotzet.gradle.task.ZetCleanTask.class)
-    }
+    String description = 'Remove all non-running containers';
 
     @Override
     void executeInternal() {

@@ -7,9 +7,7 @@ import org.gradle.process.internal.CurrentProcess
  */
 class ZetPullTask extends AbstractZetTask {
 
-    ZetPullTask() {
-        super(ZetPullTask.class)
-    }
+    String description = 'Pull required images from docker registry';
 
     @Override
     void executeInternal() {
