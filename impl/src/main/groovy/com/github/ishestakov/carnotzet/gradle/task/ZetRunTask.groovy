@@ -9,16 +9,14 @@ import org.apache.maven.plugin.MojoFailureException
 
 class ZetRunTask extends AbstractZetTask {
 
-    ZetRunTask() {
-        super(ZetRunTask.class)
-    }
 
+    String description = 'Run the container(s) and watch the output';
     @Override
     void executeInternal() {
         execute(getRuntime(), getCarnotzet(), getService());
     }
 
-    public static void execute(ContainerOrchestrationRuntime runtime, Carnotzet carnotzet, String service) throws MojoExecutionException,
+    public void execute(ContainerOrchestrationRuntime runtime, Carnotzet carnotzet, String service) throws MojoExecutionException,
             MojoFailureException {
         if (service == null) {
             runtime.start();

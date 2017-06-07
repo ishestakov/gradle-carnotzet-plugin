@@ -18,6 +18,10 @@ apply plugin: 'com.github.ishestakov.carnotzet'
 
 sourceCompatibility = 1.8
 
+carnotzet {
+    moduleResourcesPath "src/main/resources"
+}
+
 repositories {
     mavenLocal()
     mavenCentral()
