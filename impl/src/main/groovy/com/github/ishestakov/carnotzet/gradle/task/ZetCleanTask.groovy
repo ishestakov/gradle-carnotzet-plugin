@@ -5,10 +5,14 @@ package com.github.ishestakov.carnotzet.gradle.task
  */
 public class ZetCleanTask extends AbstractZetTask {
 
-    String description = 'Remove all non-running containers';
+    String description = 'Remove resources for container(s). You can specify concrete container using -Pservice=${service.name}';
 
     @Override
     void executeInternal() {
-        getRuntime().clean();
+        if (getService()) {
+            getRuntime().clean(getService());
+        } else {
+            getRuntime().clean();
+        }
     }
 }
