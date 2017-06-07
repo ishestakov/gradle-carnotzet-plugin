@@ -10,7 +10,7 @@ import org.apache.maven.plugin.MojoFailureException
 class ZetRunTask extends AbstractZetTask {
 
 
-    String description = 'Run the container(s) and watch the output';
+    String description = 'Run the container(s) and watch the output. You can specify concrete container using -Pservice=${service.name}';
     @Override
     void executeInternal() {
         execute(getRuntime(), getCarnotzet(), getService());
@@ -23,7 +23,7 @@ class ZetRunTask extends AbstractZetTask {
         } else {
             runtime.start(service);
         }
-        Runtime.getRuntime().addShutdownHook(new Thread({runtime.stop}));
+        Runtime.getRuntime().addShutdownHook(new Thread(runtime.&stop));
         LogListener printer = new StdOutLogPrinter(getServiceNames(carnotzet), null, true);
         if (service != null) {
             printer.setEventFilter({event -> event.getService().equals(service)})

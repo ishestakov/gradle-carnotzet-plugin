@@ -12,6 +12,10 @@ public class ZetAddressesTask extends AbstractZetTask {
         execute(getRuntime(), getLogger());
     }
 
+    private OutputStream getStandardOutput() {
+        return System.out;
+    }
+
     void execute(ContainerOrchestrationRuntime runtime, Logger log) {
         List<Container> containers = runtime.getContainers();
         if (containers.isEmpty()) {
