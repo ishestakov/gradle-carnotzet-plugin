@@ -4,14 +4,11 @@ import com.github.swissquote.carnotzet.core.Carnotzet
 import com.github.swissquote.carnotzet.core.runtime.api.ContainerOrchestrationRuntime
 import com.github.swissquote.carnotzet.core.runtime.log.LogEvent
 import com.github.swissquote.carnotzet.core.runtime.log.StdOutLogPrinter
-import org.gradle.api.tasks.Input
 
 public class ZetLogsTask extends AbstractZetTask {
 
 
-    String description = 'Show logs for container(s)';
-    @Input
-    String service;
+    String description = 'Show logs for container(s). You can specify concrete container using -Pservice=${service.name}';
     @Override
     void executeInternal() {
         execute(getRuntime(), getCarnotzet(), getService());
@@ -19,7 +16,7 @@ public class ZetLogsTask extends AbstractZetTask {
 
     private static volatile long lastLogEventTime = System.currentTimeMillis();
 
-    static void execute(ContainerOrchestrationRuntime runtime, Carnotzet carnotzet, String service) {
+    void execute(ContainerOrchestrationRuntime runtime, Carnotzet carnotzet, String service) {
 
         // defaults
         boolean follow = true;

@@ -11,6 +11,10 @@ class ZetPullTask extends AbstractZetTask {
 
     @Override
     void executeInternal() {
-        getRuntime().pull()
+        if (getService()) {
+            getRuntime().pull(getService())
+        } else {
+            getRuntime().pull()
+        }
     }
 }

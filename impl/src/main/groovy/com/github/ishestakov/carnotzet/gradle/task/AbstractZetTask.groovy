@@ -24,7 +24,6 @@ abstract class AbstractZetTask extends DefaultTask {
     Carnotzet carnotzet;
     ContainerOrchestrationRuntime runtime;
     boolean follow;
-    String service;
 
     @Inject
     protected ExecActionFactory getExecActionFactory() {
@@ -49,6 +48,10 @@ abstract class AbstractZetTask extends DefaultTask {
     }
 
     abstract void executeInternal()
+
+    String getService() {
+        return project.properties.get("service");
+    }
 
     Runnable wrapWithLogFollowIfNeeded(Runnable block) {
         if (follow) {
