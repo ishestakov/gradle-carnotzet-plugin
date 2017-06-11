@@ -10,6 +10,7 @@ import com.github.swissquote.carnotzet.core.runtime.log.LogListener
 import com.github.swissquote.carnotzet.core.runtime.log.StdOutLogPrinter
 import com.github.swissquote.carnotzet.runtime.docker.compose.DockerComposeRuntime
 import org.gradle.api.DefaultTask
+import org.gradle.api.internal.tasks.options.Option
 import org.gradle.api.tasks.TaskAction
 import org.gradle.process.internal.ExecActionFactory
 
@@ -48,10 +49,6 @@ abstract class AbstractZetTask extends DefaultTask {
     }
 
     abstract void executeInternal()
-
-    String getService() {
-        return project.properties.get("service");
-    }
 
     Runnable wrapWithLogFollowIfNeeded(Runnable block) {
         if (follow) {

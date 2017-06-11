@@ -7,7 +7,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.github.ishestakov:gradle-carnotzet-plugin:1.0-SNAPSHOT"
+        classpath "com.github.ishestakov:gradle-carnotzet-plugin:0.0.1-SNAPSHOT"
     }
 }
 
