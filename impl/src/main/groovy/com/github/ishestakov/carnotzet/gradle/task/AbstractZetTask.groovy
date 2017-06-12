@@ -19,7 +19,7 @@ import java.nio.file.Paths
 
 import static java.util.stream.Collectors.toList
 
-abstract class AbstractZetTask extends DefaultTask {
+public abstract class AbstractZetTask extends DefaultTask {
 
     String group = 'Carnotzet'
     Carnotzet carnotzet;

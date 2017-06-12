@@ -12,13 +12,12 @@ buildscript {
 
 plugins {
     id "java-gradle-plugin"
-    id "groovy"
     id "maven"
     id "maven-publish"
     id "com.gradle.plugin-publish" version "0.9.7"
 }
 
-version '0.0.2'
+version '0.0.3-SNAPSHOT'
 group 'com.github.ishestakov'
 
 pluginBundle {
@@ -46,6 +45,10 @@ repositories {
 dependencies {
     compile 'com.github.swissquote:carnotzet-core:1.1.0'
     compile 'com.github.swissquote:carnotzet-orchestrator-docker-compose:1.1.0'
+    testCompile ("org.spockframework:spock-core:1.1-groovy-2.4") {
+        exclude module: "groovy-all"
+    }
+    testCompile gradleTestKit()
 }
 
 publishing {
