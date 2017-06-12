@@ -3,9 +3,9 @@ package com.github.ishestakov.carnotzet.gradle.task
 /**
  * Created by ishestakov on 5/31/17.
  */
-class ZetRestartTask extends AbstractZetTask {
+class ZetRestartTask extends AbstractZetServiceOrientedTask {
 
-    String description = 'Restart the container(s). You can specify concrete container using -Pservice=${service.name}';
+    String description = 'Restart the container(s)';
 
     @Override
     void executeInternal() {

@@ -3,9 +3,9 @@ package com.github.ishestakov.carnotzet.gradle.task;
 import com.github.swissquote.carnotzet.core.runtime.log.LogListener;
 import com.github.swissquote.carnotzet.core.runtime.log.StdOutLogPrinter;
 
-public class ZetStopTask extends AbstractZetTask {
+public class ZetStopTask extends AbstractZetServiceOrientedTask {
 
-	String description = 'Stop the container(s). You can specify concrete container using -Pservice=${service.name}';
+	String description = 'Stop the container(s).'
 
 	@Override
 	public void executeInternal() {
@@ -15,9 +15,9 @@ public class ZetStopTask extends AbstractZetTask {
 		}
 
 		if (getService() == null) {
-			getRuntime().stop();
+			getRuntime().stop()
 		} else {
-			getRuntime().stop(getService());
+			getRuntime().stop(getService())
 		}
 	}
 }

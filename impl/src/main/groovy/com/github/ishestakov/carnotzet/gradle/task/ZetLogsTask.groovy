@@ -5,10 +5,10 @@ import com.github.swissquote.carnotzet.core.runtime.api.ContainerOrchestrationRu
 import com.github.swissquote.carnotzet.core.runtime.log.LogEvent
 import com.github.swissquote.carnotzet.core.runtime.log.StdOutLogPrinter
 
-public class ZetLogsTask extends AbstractZetTask {
+public class ZetLogsTask extends AbstractZetServiceOrientedTask {
 
 
-    String description = 'Show logs for container(s). You can specify concrete container using -Pservice=${service.name}';
+    String description = 'Show logs for container(s)';
     @Override
     void executeInternal() {
         execute(getRuntime(), getCarnotzet(), getService());

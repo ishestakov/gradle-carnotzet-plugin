@@ -1,14 +1,39 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.gradle.publish:plugin-publish-plugin:0.9.7"
+    }
+}
+
+
 plugins {
     id "java-gradle-plugin"
     id "groovy"
     id "maven"
     id "maven-publish"
+    id "com.gradle.plugin-publish" version "0.9.7"
 }
 
+version '0.0.2'
 group 'com.github.ishestakov'
-version '1.0-SNAPSHOT'
 
+pluginBundle {
+    website = 'https://github.com/ishestakov/gradle-carnotzet-plugin'
+    vcsUrl = 'https://github.com/ishestakov/gradle-carnotzet-plugin.git'
+    description = 'The Gradle version of Carnotzet.'
+    tags = ['Carnotzet', 'Docker', 'docker-compose', 'sandbox', 'testing environment', 'development environment', 'modular environment']
 
+    plugins {
+        gradleCarnotzetPlugin {
+            id = "com.github.ishestakov.carnotzet"
+            displayName = 'Gradle Carnotzet plugin'
+        }
+    }
+}
 
 sourceCompatibility = 1.8
 
@@ -17,9 +42,10 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
-    compile 'com.github.swissquote:carnotzet-core:1.0.1-SNAPSHOT'
-    compile 'com.github.swissquote:carnotzet-orchestrator-docker-compose:1.0.1-SNAPSHOT'
+    compile 'com.github.swissquote:carnotzet-core:1.1.0'
+    compile 'com.github.swissquote:carnotzet-orchestrator-docker-compose:1.1.0'
 }
 
 publishing {
@@ -45,7 +71,7 @@ gradlePlugin {
 
 install {
     repositories.mavenInstaller {
-        pom.version = '1.0-SNAPSHOT'
+        pom.version = "${version}"
         pom.artifactId = 'gradle-carnotzet-plugin'
     }
 }
