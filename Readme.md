@@ -1,5 +1,5 @@
 # Gradle Carnotzet plugin.
-[![Build Status](https://travis-ci.org/ishestakov/gradle-carnotzet-plugin.svg?branch=master)](https://travis-ci.org/ishestakov/gradle-carnotzet-plugin)
+[![Build Status](https://travis-ci.org/ishestakov/gradle-carnotzet-plugin.svg?branch=master)](https://travis-ci.org/ishestakov/gradle-carnotzet-plugin) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 The Gradle plugin version for [Carnotzet](https://github.com/swissquote/carnotzet) project.
 
