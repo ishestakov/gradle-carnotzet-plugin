@@ -11,6 +11,7 @@ buildscript {
 
 
 plugins {
+    id 'groovy'
     id "java-gradle-plugin"
     id "maven"
     id "maven-publish"
