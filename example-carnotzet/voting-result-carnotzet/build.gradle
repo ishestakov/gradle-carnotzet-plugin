@@ -1,0 +1,32 @@
+group 'com.github.ishestakov.carnotzet.example'
+version '1.0'
+
+buildscript {
+    repositories{
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.github.ishestakov:gradle-carnotzet-plugin:0.0.2"
+    }
+}
+
+apply plugin: 'java'
+apply plugin:  'maven'
+apply plugin: 'com.github.ishestakov.carnotzet'
+
+
+sourceCompatibility = 1.8
+
+carnotzet {
+    moduleResourcesPath "src/main/resources"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.github.ishestakov.carnotzet.examples', name: 'postgres-carnotzet', version: '1.1.0'
+}

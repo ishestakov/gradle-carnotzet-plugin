@@ -1,0 +1,1 @@
+include "postgres-carnotzet", "redis-carnotzet", "voting-result-carnotzet", "voting-vote-carnotzet", "voting-worker-carnotzet", "voting-all-carnotzet"
