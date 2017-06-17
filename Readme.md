@@ -2,6 +2,8 @@
 [![Build Status](https://travis-ci.org/ishestakov/gradle-carnotzet-plugin.svg?branch=master)](https://travis-ci.org/ishestakov/gradle-carnotzet-plugin) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 The Gradle plugin version for [Carnotzet](https://github.com/swissquote/carnotzet) project.
+<aside class="warning">As Carnotzet hardly relies on Maven artifacts and JAR packaging for dependencies your Gradle module should be available through Maven public or local repo.
+</aside>
 
 ## Configuration
 Build script snippet for use in all Gradle versions:
