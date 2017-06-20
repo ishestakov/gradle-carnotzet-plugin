@@ -4,7 +4,7 @@ import com.github.swissquote.carnotzet.core.runtime.api.Container
 import com.github.swissquote.carnotzet.core.runtime.api.ContainerOrchestrationRuntime
 import org.gradle.api.logging.Logger
 
-public class ZetAddressesTask extends AbstractZetTask {
+class ZetAddressesTask extends AbstractZetTask {
 
     String description = "Shows the IP addresses for all running containers"
     @Override

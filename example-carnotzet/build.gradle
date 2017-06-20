@@ -1,3 +1,19 @@
 group 'com.github.ishestakov.carnotzet.example'
 version '1.0'
 
+buildscript {
+    repositories{
+        mavenLocal()
+        mavenCentral()
+    }
+
+}
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+
+allprojects {
+    version = "0.0.2"
+}

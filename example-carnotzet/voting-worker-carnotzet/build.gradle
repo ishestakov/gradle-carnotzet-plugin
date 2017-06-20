@@ -6,7 +6,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.github.ishestakov:gradle-carnotzet-plugin:0.0.2"
+        classpath "com.github.ishestakov:gradle-carnotzet-plugin:${version}"
     }
 }
 
@@ -27,5 +27,6 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.github.ishestakov.carnotzet.example', name: 'redis-carnotzet', version: "${version}"
+    compile group: 'com.github.ishestakov.carnotzet.example', name: 'postgres-carnotzet', version: "${version}"
 }
