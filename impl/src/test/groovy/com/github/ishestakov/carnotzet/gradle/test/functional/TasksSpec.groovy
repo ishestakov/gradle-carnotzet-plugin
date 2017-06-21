@@ -31,7 +31,6 @@ public class TasksSpec extends Specification {
                 .build();
 
         then:
-        result.output.contains("Starting");
         containerNames().size() == 5
         result.task(":voting-all-carnotzet:zetStart").outcome == TaskOutcome.SUCCESS;
         where:
