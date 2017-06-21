@@ -6,6 +6,10 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+sudo: required
+script:
+  - ./gradlew assemble
+  - ./gradlew check -i
 services:
   - docker
 jdk:
